@@ -5,7 +5,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="w-screen h-screen relative">
       <aside className="absolute left-0 top-0 h-full w-[200px] border-r border-black/10">
         <div className="px-4 my-4">
-          <span className="text-3xl">MOOD</span>
+          <span className="text-3xl">JOURNAL MOOD</span>
         </div>
       </aside>
       <div className="ml-[200px] h-full w-[calc(100vw-200px)]">
