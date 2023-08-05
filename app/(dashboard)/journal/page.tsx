@@ -4,6 +4,7 @@ import { prisma } from "@/utils/db"
 import NewEntryCard from "@/components/NewEntryCard"
 import EntryCard from "@/components/EntryCard"
 import Link from "next/link"
+import { analyze } from "@/utils/ai"
 
 const getEntries = async () => {
   const user = await getUserByClerkID()
@@ -15,6 +16,9 @@ const getEntries = async () => {
       createdAt: "desc",
     },
   })
+
+  await analyze(`Today was a great day, I got admitted to Strathmore University. I am so happy. What a great day. Now I can learn Software Engineering at its depth. I am so happy.
+  `)
 
   return entries
 }

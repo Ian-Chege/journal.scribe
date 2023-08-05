@@ -17,6 +17,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
+    "langchain": "^0.0.120",
     "next": "13.4.9",
     "postcss": "8.4.26",
     "react": "18.2.0",
@@ -24,7 +25,8 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
-    "typewriter-effect": "^2.20.1"
+    "typewriter-effect": "^2.20.1",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "prisma": "^5.0.0"
