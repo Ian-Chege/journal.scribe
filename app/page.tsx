@@ -6,17 +6,17 @@ export default async function Home() {
   let href = userId ? "/journal" : "/new-user"
 
   return (
-    <div className="w-screen h-screen bg-black flex justify-center items-center text-white">
+    <div className="bg-custom-image w-screen h-screen flex justify-center items-center text-black">
       <div className="w-full max-w-[600px] mx-auto px-4 sm:px-0">
-        <h1 className="text-6xl mb-4">The best Journal app, period.</h1>
-        <p className="text-2xl sm:text-2xl text-white/60 mb-4">
-          This is the best app for tracking your mood through out your life. All
-          you have to do is be honest.
+        <h1 className="text-6xl mb-4">Journal.scribe</h1>
+        <p className="text-2xl sm:text-2xl text-black/60 mb-4">
+          Your personal space for self-reflection. Write, track, and relive your
+          life’s journey. Your story matters, let’s chronicle it together.
         </p>
         <div>
           <Link href={href}>
-            <button className="bg-blue-600 px-4 py-2 rounded-lg text-xl">
-              get started
+            <button className="bg-cyan-700 px-4 py-2 rounded-lg text-xl">
+              Scribe it
             </button>
           </Link>
         </div>
