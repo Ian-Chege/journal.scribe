@@ -1,10 +1,10 @@
+import Link from "next/link"
+
 import { getUserByClerkID } from "@/utils/auth"
 import { prisma } from "@/utils/db"
 
 import NewEntryCard from "@/components/NewEntryCard"
 import EntryCard from "@/components/EntryCard"
-import Link from "next/link"
-import { analyze } from "@/utils/ai"
 import Question from "@/components/Question"
 
 const getEntries = async () => {
