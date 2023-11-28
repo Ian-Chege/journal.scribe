@@ -3,6 +3,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import React, { useState } from "react"
+import { useTheme } from "next-themes"
+import { Moon, Sun } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -66,7 +68,12 @@ const components: { title: string; href: string; description: string }[] = [
 ]
 
 const Header = () => {
+  const { theme, setTheme } = useTheme()
   const [path, setPath] = useState("#products")
+  const toggleTheme = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light")
+  }
+
   return (
     <header
       className="p-4
@@ -210,6 +217,14 @@ const Header = () => {
         justify-end
       "
       >
+        <Button variant="outline" size="icon" onClick={toggleTheme}>
+          {theme === "dark" ? (
+            <Sun className="h-[1.2rem] w-[1.2rem]" />
+          ) : (
+            <Moon className="h-[1.2rem] w-[1.2rem]" />
+          )}
+        </Button>
+
         <Link href="/sign-in">
           <Button variant="btn-secondary" className=" p-1 hidden sm:block">
             Login
