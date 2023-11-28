@@ -7,16 +7,22 @@ import { prisma } from "@/utils/db"
 export const POST = async (request: Request) => {
   const { question } = await request.json()
   const user = await getUserByClerkID()
-  const entries = await prisma.journalEntry.findMany({
-    where: {
-      userId: user.id,
-    },
-    select: {
-      content: true,
-      createdAt: true,
-    },
-  })
+  const entries = (
+    await prisma.journalEntry.findMany({
+      where: {
+        userId: user.id,
+      },
+      select: {
+        id: true,
+        content: true,
+        createdAt: true,
+      },
+    })
+  ).map((entry) => ({
+    ...entry,
+    createdAt: entry.createdAt.toISOString(),
+  }))
 
-  const answer = await qa(question, entries)
+  const answer = await qa({ question, entries })
   return NextResponse.json({ data: answer })
 }

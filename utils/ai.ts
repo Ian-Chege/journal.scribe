@@ -11,6 +11,12 @@ import {
 import { Document } from "langchain/document"
 import { z } from "zod"
 
+interface Entry {
+  content: string
+  id: string
+  createdAt: string
+}
+
 const parser = StructuredOutputParser.fromZodSchema(
   z.object({
     mood: z
@@ -36,7 +42,7 @@ const parser = StructuredOutputParser.fromZodSchema(
   })
 )
 
-const getPrompt = async (content) => {
+const getPrompt = async (content: string) => {
   const format_instructions = parser.getFormatInstructions()
   const prompt = new PromptTemplate({
     template:
@@ -50,7 +56,7 @@ const getPrompt = async (content) => {
   return input
 }
 
-export const analyze = async (content) => {
+export const analyze = async (content: string) => {
   const input = await getPrompt(content)
   const model = new OpenAI({ temperature: 0, modelName: "gpt-3.5-turbo" })
   const result = await model.call(input)
@@ -62,9 +68,15 @@ export const analyze = async (content) => {
   }
 }
 
-export const qa = async (question, entries) => {
+export const qa = async ({
+  question,
+  entries,
+}: {
+  question: string
+  entries: Entry[]
+}) => {
   const docs = entries.map(
-    (entry) =>
+    (entry: any) =>
       new Document({
         pageContent: entry.content,
         metadata: { source: entry.id, date: entry.createdAt },
