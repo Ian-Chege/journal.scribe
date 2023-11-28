@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 import { CLIENTS, PRICING_CARDS, PRICING_PLANS, USERS } from "@/lib/constants"
 
 import Banner from "/public/appBanner.png"
-import Cal from "/public/Cal.png"
+import Cal from "/public/cal.png"
 import Diamond from "/public/icons/diamond.svg"
 import CheckIcon from "/public/icons/check.svg"
 
